@@ -8,7 +8,7 @@ h1 {
   line-height: 28px;
   margin-bottom: 0;
 }
-span {
+span#bottom-date {
   color: #0b3b48;
   font-size: 16px;
   font-weight: 600;
@@ -28,7 +28,12 @@ li {
   font-size: 16px;
   font-weight: 100;
   line-height: 19px;
+  text-transform: capitalize;
 }
+small a {
+  text-decoration: none;
+}
+
 .weather-app-wrapper {
   max-width: 600px;
   margin: 30px auto;
@@ -60,7 +65,6 @@ li {
   top: -34px;
 }
 .code-link {
-    color: #0b3b48;
-    font-size: 12px;
-
+  color: #0b3b48;
+  font-size: 12px;
 }

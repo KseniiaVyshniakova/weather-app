@@ -19,6 +19,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
   </head>
@@ -29,10 +30,10 @@
           <div class="overview">
             <div class="row">
               <div class="col-8">
-                <h1>Kyiv</h1>
+                <h1 id="city"></h1>
               </div>
               <div class="col-4">
-                <span>19 June | 13:20</span>
+                <span id="bottom-date">19 June | 13:20</span>
               </div>
             </div>
           </div>
@@ -45,16 +46,16 @@
                   class="float-left"
                 />
                 <div class="float-left">
-                  <strong>29</strong>
+                  <strong id="temperature"></strong>
                   <span class="units">°C | <a href="#">°F</a></span>
                 </div>
               </div>
             </div>
             <div class="col-4">
               <ul>
-                <li>Partly cloudy</li>
-                <li>Humidity: 31%</li>
-                <li>Wind: 11 km/h</li>
+                <li id="description"></li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span> km/h</li>
               </ul>
             </div>
           </div>
@@ -63,7 +64,7 @@
           <a
             href="https://github.com/KseniiaVyshniakova/weather-app"
             target="_blank"
-            >Open-source code</a
+                        >Open-source code</a
           >
           by Kseniia Vyshniakova
         </small>
