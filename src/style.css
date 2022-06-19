@@ -8,7 +8,7 @@ h1 {
   line-height: 28px;
   margin-bottom: 0;
 }
-span#bottom-date {
+span#date {
   color: #0b3b48;
   font-size: 16px;
   font-weight: 600;
@@ -28,6 +28,8 @@ li {
   font-size: 16px;
   font-weight: 100;
   line-height: 19px;
+}
+li::first-letter {
   text-transform: capitalize;
 }
 small a {
