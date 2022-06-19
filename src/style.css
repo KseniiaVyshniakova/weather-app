@@ -67,3 +67,6 @@ small a {
 .code-link {
   font-size: 12px;
 }
+.btn {
+    border: 1px solid #03062025;
+}
