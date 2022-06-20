@@ -64,9 +64,22 @@ small a {
   font-size: 16px;
   top: -34px;
 }
+
+.weather-temperature a {
+  text-decoration: none;
+}
 .code-link {
   font-size: 12px;
 }
 .btn {
-    border: 1px solid #03062025;
+  border: 1px solid #03062025;
+}
+
+.weather-temperature .active {
+  color: #030620;
+  cursor: default;
+}
+
+.weather-temperature .active:hover {
+  text-decoration: none;
 }
