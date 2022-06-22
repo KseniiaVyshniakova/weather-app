@@ -28,28 +28,26 @@ function formatDate(timestamp) {
 }
 
 function formatDay(timestamp) {
-let date = new Date(timestamp * 1000);
-let day = date.getDay();
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-return days[day];
-
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
 }
 
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
-    forecastHTML =
-      forecastHTML +
-      `  
+      forecastHTML =
+        forecastHTML +
+        `  
     <div class="col-2">
       <div class="weather-forecast-date">
         ${formatDay(forecastDay.dt)}
       </div>
-      <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
+      <img src="src/img/${forecastDay.weather[0].icon}.svg"
           alt="Clear" 
           width="46px"
           />
@@ -57,7 +55,9 @@ function displayForecast(response) {
         <span class="weather-forecast-temperature-max">
             ${Math.round(forecastDay.temp.max)}°
         </span>
-        <span class="weather-forecast-temperature-min"> ${Math.round(forecastDay.temp.min)}°</span>
+        <span class="weather-forecast-temperature-min"> ${Math.round(
+          forecastDay.temp.min
+        )}°</span>
                 
       </div>
     </div>
@@ -74,7 +74,6 @@ function getForecast(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
-
 
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
@@ -98,6 +97,91 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  if (response.data.weather[0].description === "clear sky") {
+    iconElement.setAttribute("src", "src/img/01d.svg");
+    iconElement.setAttribute("alt", "sunny");
+  } else if (response.data.weather[0].description === "few clouds") {
+    iconElement.setAttribute("src", "src/img/02d.svg");
+    iconElement.setAttribute("alt", "cloudy");
+  } else if (response.data.weather[0].description === "scattered clouds") {
+    iconElement.setAttribute("src", "src/img/03d.svg");
+    iconElement.setAttribute("alt", "cloudy");
+  } else if (
+    response.data.weather[0].description === "broken clouds" ||
+    "overcast clouds"
+  ) {
+    iconElement.setAttribute("src", "src/img/04d.svg");
+    iconElement.setAttribute("alt", "broken-clouds");
+  } else if (
+    response.data.weather[0].description === "shower rain" ||
+    "moderate rain"
+  ) {
+    iconElement.setAttribute("src", "src/img/09d.svg");
+    iconElement.setAttribute("alt", "shower-rain");
+  } else if (response.data.weather[0].description === "rain") {
+    iconElement.setAttribute("src", "src/img/10d.svg");
+    iconElement.setAttribute("alt", "rainy");
+  } else if (response.data.weather[0].description === "thunderstorm") {
+    iconElement.setAttribute("src", "src/img/11d.svg");
+    iconElement.setAttribute("alt", "thunderstorms");
+  } else if (response.data.weather[0].description === "snow") {
+    iconElement.setAttribute("src", "src/img/13d.svg");
+    iconElement.setAttribute("alt", "snowy");
+  } else if (response.data.weather[0].description === "mist") {
+    iconElement.setAttribute("src", "src/img/50d.svg");
+    iconElement.setAttribute("alt", "mist");
+  }
+
+  let date = new Date(response.data.dt * 1000);
+  let hours = date.getHours();
+  if (
+    (response.data.weather[0].description === "clear sky" || "clear") &
+    (hours > 20)
+  ) {
+    iconElement.setAttribute("src", "src/img/01n.svg");
+    iconElement.setAttribute("alt", "night");
+  } else if (
+    (response.data.weather[0].description === "few clouds") &
+    (hours > 20)
+  ) {
+    iconElement.setAttribute("src", "src/img/02n.svg");
+    iconElement.setAttribute("alt", "night cloudy");
+  } else if (
+    (response.data.weather[0].description === "scattered clouds") &
+    (hours > 20)
+  ) {
+    iconElement.setAttribute("src", "src/img/03n.svg");
+    iconElement.setAttribute("alt", "night cloudy");
+  } else if (
+    (response.data.weather[0].description === "broken clouds" ||
+      "overcast clouds") &
+    (hours > 20)
+  ) {
+    iconElement.setAttribute("src", "src/img/04n.svg");
+    iconElement.setAttribute("alt", "night cloudy");
+  } else if (
+    (response.data.weather[0].description === "shower rain") &
+    (hours > 20)
+  ) {
+    iconElement.setAttribute("src", "src/img/09n.svg");
+    iconElement.setAttribute("alt", "night rain");
+  } else if ((response.data.weather[0].description === "rain") & (hours > 20)) {
+    iconElement.setAttribute("src", "src/img/10n.svg");
+    iconElement.setAttribute("alt", "night rain");
+  } else if (
+    (response.data.weather[0].description === "thunderstorm") &
+    (hours > 20)
+  ) {
+    iconElement.setAttribute("src", "src/img/11n.svg");
+    iconElement.setAttribute("alt", "night thunderstorm");
+  } else if ((response.data.weather[0].description === "snow") & (hours > 20)) {
+    iconElement.setAttribute("src", "src/img/13n.svg");
+    iconElement.setAttribute("alt", "night thunderstorm");
+  } else if ((response.data.weather[0].description === "mist") & (hours > 20)) {
+    iconElement.setAttribute("src", "src/img/50n.svg");
+    iconElement.setAttribute("alt", "night thunderstorm");
+  }
 
   getForecast(response.data.coord);
 }
