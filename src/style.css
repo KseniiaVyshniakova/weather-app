@@ -1,6 +1,7 @@
 body {
   font-family: "Quicksand", sans-serif;
   color: #030620;
+  
 }
 h1 {
   font-size: 24px;
@@ -37,11 +38,15 @@ small a {
 .weather-app-wrapper {
   max-width: 600px;
   margin: 30px auto;
+  
 }
 .weather-app {
-  padding: 20px;
+  padding: 25px;
   border: 1px solid #03062025;
   border-radius: 7px;
+  box-shadow: 5px 10px 30px #03062025;
+  
+  
 }
 .overview {
   margin-bottom: 20px;
@@ -87,6 +92,9 @@ small a {
   margin-top: 20px;
   text-align: center;
   color: #030620;
+ 
+  padding: 20px 0;
+  
   }
 
   .weather-forecast-date {
@@ -102,3 +110,5 @@ opacity: 0.8;
   .weather-forecast-temperatures {
 font-size: 13px;
   }
+
+ 
