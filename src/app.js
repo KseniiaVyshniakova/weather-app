@@ -47,7 +47,7 @@ function displayForecast(response) {
       <div class="weather-forecast-date">
         ${formatDay(forecastDay.dt)}
       </div>
-      <img src="src/img/${forecastDay.weather[0].icon}.svg"
+        <img src="src/img/${forecastDay.weather[0].icon}.svg"
           alt="Clear" 
           width="46px"
           />
@@ -154,8 +154,13 @@ function displayTemperature(response) {
     iconElement.setAttribute("src", "src/img/03n.svg");
     iconElement.setAttribute("alt", "night cloudy");
   } else if (
-    (response.data.weather[0].description === "broken clouds" ||
-      "overcast clouds") &
+    (response.data.weather[0].description === "broken clouds") &
+    (hours > 20)
+  ) {
+    iconElement.setAttribute("src", "src/img/04n.svg");
+    iconElement.setAttribute("alt", "night cloudy");
+  } else if (
+    (response.data.weather[0].description === "overcast clouds") &
     (hours > 20)
   ) {
     iconElement.setAttribute("src", "src/img/04n.svg");
