@@ -135,8 +135,11 @@ function displayTemperature(response) {
 
   let date = new Date(response.data.dt * 1000);
   let hours = date.getHours();
-  if (
-    (response.data.weather[0].description === "clear sky" || "clear") &
+  if ((response.data.weather[0].description === "clear sky") & (hours > 20)) {
+    iconElement.setAttribute("src", "src/img/01n.svg");
+    iconElement.setAttribute("alt", "night");
+  } else if (
+    (response.data.weather[0].description === "clear") &
     (hours > 20)
   ) {
     iconElement.setAttribute("src", "src/img/01n.svg");
