@@ -144,6 +144,9 @@ function displayTemperature(response) {
   } else if (response.data.weather[0].description === "mist") {
     iconElement.setAttribute("src", "src/img/50d.svg");
     iconElement.setAttribute("alt", "mist");
+  } else if (response.data.weather[0].description === "haze") {
+    iconElement.setAttribute("src", "src/img/50d.svg");
+    iconElement.setAttribute("alt", "mist");
   }
 
   let date = new Date(response.data.dt * 1000);
