@@ -228,10 +228,13 @@ function displayTemperature(response) {
     iconElement.setAttribute("alt", "night thunderstorm");
   } else if ((response.data.weather[0].description === "snow") & (hours > 20)) {
     iconElement.setAttribute("src", "src/img/13n.svg");
-    iconElement.setAttribute("alt", "night thunderstorm");
+    iconElement.setAttribute("alt", "snow");
   } else if ((response.data.weather[0].description === "mist") & (hours > 20)) {
     iconElement.setAttribute("src", "src/img/50n.svg");
-    iconElement.setAttribute("alt", "night thunderstorm");
+    iconElement.setAttribute("alt", "night mist");
+  } else if ((response.data.weather[0].description === "haze") & (hours > 20)) {
+    iconElement.setAttribute("src", "src/img/50n.svg");
+    iconElement.setAttribute("alt", "night haze");
   }
   getForecast(response.data.coord);
 }
@@ -259,24 +262,24 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemperarture = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperarture);
-}
+// function displayFahrenheitTemperature(event) {
+//   event.preventDefault();
+//   let temperatureElement = document.querySelector("#temperature");
+//   celsiusLink.classList.remove("active");
+//   fahrenheitLink.classList.add("active");
+//   let fahrenheitTemperarture = (celsiusTemperature * 9) / 5 + 32;
+//   temperatureElement.innerHTML = Math.round(fahrenheitTemperarture);
+// }
 
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
+// function displayCelsiusTemperature(event) {
+//   event.preventDefault();
+//   celsiusLink.classList.add("active");
+//   fahrenheitLink.classList.remove("active");
+//   let temperatureElement = document.querySelector("#temperature");
+//   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+// }
 
-let celsiusTemperature = null;
+// let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
@@ -284,10 +287,10 @@ form.addEventListener("submit", handleSubmit);
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+// let fahrenheitLink = document.querySelector("#fahrenheit-link");
+// fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
+// let celsiusLink = document.querySelector("#celsius-link");
+// celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Kyiv");
