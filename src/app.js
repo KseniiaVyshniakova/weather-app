@@ -146,96 +146,111 @@ function displayTemperature(response) {
     iconElement.setAttribute("alt", "mist");
   } else if (response.data.weather[0].description === "haze") {
     iconElement.setAttribute("src", "src/img/50d.svg");
-    iconElement.setAttribute("alt", "mist");
+    iconElement.setAttribute("alt", "haze");
   }
 
   let date = new Date(response.data.dt * 1000);
   let hours = date.getHours();
-  if ((response.data.weather[0].description === "clear sky") & (hours > 20)) {
+  if (
+    (response.data.weather[0].description === "clear sky") &
+    (hours > 20 || hours < 4)
+  ) {
     iconElement.setAttribute("src", "src/img/01n.svg");
     iconElement.setAttribute("alt", "night");
   } else if (
     (response.data.weather[0].description === "clear") &
-    (hours > 20)
+    (hours > 20 || hours < 4)
   ) {
     iconElement.setAttribute("src", "src/img/01n.svg");
     iconElement.setAttribute("alt", "night");
   } else if (
     (response.data.weather[0].description === "few clouds") &
-    (hours > 20)
+    (hours > 20 || hours < 4)
   ) {
     iconElement.setAttribute("src", "src/img/02n.svg");
     iconElement.setAttribute("alt", "night cloudy");
   } else if (
     (response.data.weather[0].description === "scattered clouds") &
-    (hours > 20)
+    (hours > 20 || hours < 4)
   ) {
     iconElement.setAttribute("src", "src/img/03n.svg");
     iconElement.setAttribute("alt", "night cloudy");
   } else if (
     (response.data.weather[0].description === "broken clouds") &
-    (hours > 20)
+    (hours > 20 || hours < 4)
   ) {
     iconElement.setAttribute("src", "src/img/04n.svg");
     iconElement.setAttribute("alt", "night cloudy");
   } else if (
     (response.data.weather[0].description === "overcast clouds") &
-    (hours > 20)
+    (hours > 20 || hours < 4)
   ) {
     iconElement.setAttribute("src", "src/img/04n.svg");
     iconElement.setAttribute("alt", "night cloudy");
   } else if (
     (response.data.weather[0].description === "shower rain") &
-    (hours > 20)
+    (hours > 20 || hours < 4)
   ) {
     iconElement.setAttribute("src", "src/img/09n.svg");
     iconElement.setAttribute("alt", "night rain");
-  } else if ((response.data.weather[0].description === "rain") & (hours > 20)) {
+  } else if (
+    (response.data.weather[0].description === "rain") &
+    (hours > 20 || hours < 4)
+  ) {
     iconElement.setAttribute("src", "src/img/10n.svg");
     iconElement.setAttribute("alt", "night rain");
   } else if (
     (response.data.weather[0].description === "moderate rain") &
-    (hours > 20)
+    (hours > 20 || hours < 4)
   ) {
     iconElement.setAttribute("src", "src/img/09n.svg");
     iconElement.setAttribute("alt", "night rain");
   } else if (
     (response.data.weather[0].description === "heavy intensity rain") &
-    (hours > 20)
+    (hours > 20 || hours < 4)
   ) {
     iconElement.setAttribute("src", "src/img/09n.svg");
     iconElement.setAttribute("alt", "night rain");
   } else if (
     (response.data.weather[0].description === "light rain") &
-    (hours > 20)
+    (hours > 20 || hours < 4)
   ) {
     iconElement.setAttribute("src", "src/img/10n.svg");
     iconElement.setAttribute("alt", "night rain");
   } else if (
     (response.data.weather[0].description === "thunderstorm") &
-    (hours > 20)
+    (hours > 20 || hours < 4)
   ) {
     iconElement.setAttribute("src", "src/img/11n.svg");
     iconElement.setAttribute("alt", "night thunderstorm");
   } else if (
     (response.data.weather[0].description === "thunderstorm with light rain") &
-    (hours > 20)
+    (hours > 20 || hours < 4)
   ) {
     iconElement.setAttribute("src", "src/img/12n.svg");
     iconElement.setAttribute("alt", "night thunderstorm");
   } else if (
     (response.data.weather[0].description === "thunderstorm with rain") &
-    (hours > 20)
+    (hours > 20 || hours < 4)
   ) {
     iconElement.setAttribute("src", "src/img/12n.svg");
     iconElement.setAttribute("alt", "night thunderstorm");
-  } else if ((response.data.weather[0].description === "snow") & (hours > 20)) {
+  } else if (
+    (response.data.weather[0].description === "snow") &
+    (hours > 20 || hours < 4)
+  ) {
     iconElement.setAttribute("src", "src/img/13n.svg");
     iconElement.setAttribute("alt", "snow");
-  } else if ((response.data.weather[0].description === "mist") & (hours > 20)) {
+  } else if (
+    (response.data.weather[0].description === "mist") &
+    (hours > 20 || hours < 4)
+  ) {
     iconElement.setAttribute("src", "src/img/50n.svg");
     iconElement.setAttribute("alt", "night mist");
-  } else if ((response.data.weather[0].description === "haze") & (hours > 20)) {
+  } else if (
+    (response.data.weather[0].description === "haze") &
+    (hours > 20 || hours < 4)
+  ) {
     iconElement.setAttribute("src", "src/img/50n.svg");
     iconElement.setAttribute("alt", "night haze");
   }
