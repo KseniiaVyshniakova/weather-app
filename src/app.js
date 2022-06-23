@@ -36,6 +36,7 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
+  console.log(forecast)
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
@@ -113,10 +114,14 @@ function displayTemperature(response) {
   ) {
     iconElement.setAttribute("src", "src/img/04d.svg");
     iconElement.setAttribute("alt", "broken-clouds");
-  } else if (
-    response.data.weather[0].description === "shower rain" ||
-    "moderate rain"
-  ) {
+  } else if (response.data.weather[0].description === "shower rain") {
+    iconElement.setAttribute("src", "src/img/09d.svg");
+    iconElement.setAttribute("alt", "shower-rain");
+  } else if (response.data.weather[0].description === "moderate rain") {
+    iconElement.setAttribute("src", "src/img/09d.svg");
+    iconElement.setAttribute("alt", "moderate rain");
+  }
+   else if (response.data.weather[0].description === "heavy intensity rain") {
     iconElement.setAttribute("src", "src/img/09d.svg");
     iconElement.setAttribute("alt", "shower-rain");
   } else if (response.data.weather[0].description === "rain") {
@@ -174,7 +179,19 @@ function displayTemperature(response) {
   ) {
     iconElement.setAttribute("src", "src/img/09n.svg");
     iconElement.setAttribute("alt", "night rain");
+  } else if (
+    (response.data.weather[0].description === "moderate rain") &
+    (hours > 20)
+  ) {
+    iconElement.setAttribute("src", "src/img/09n.svg");
+    iconElement.setAttribute("alt", "night rain");
   } else if ((response.data.weather[0].description === "rain") & (hours > 20)) {
+    iconElement.setAttribute("src", "src/img/10n.svg");
+    iconElement.setAttribute("alt", "night rain");
+  } else if (
+    (response.data.weather[0].description === "light rain") &
+    (hours > 20)
+  ) {
     iconElement.setAttribute("src", "src/img/10n.svg");
     iconElement.setAttribute("alt", "night rain");
   } else if (
