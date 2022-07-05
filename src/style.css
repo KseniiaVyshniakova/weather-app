@@ -118,4 +118,34 @@ opacity: 0.8;
 font-size: 13px;
 }
 
+@media (max-width: 576px) {
+  h1 {
+    font-size: 24px;
+  }
+  
+  li {
+    font-size: 14px;
+  }
+  #current-location-button {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .weather-temperature img {
+  margin-right: 10px;
+  height: 48px;
+  width: 48px;
+}
+
+.weather-temperature strong {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1;
+}
+.weather-temperature .units {
+  position: relative;
+  font-size: 14px;
+  top: -24px;
+}
+}
 
