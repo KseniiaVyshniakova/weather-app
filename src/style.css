@@ -147,7 +147,7 @@ small a {
   .weather-forecast-date {
     font-size: 15px;
     opacity: 0.8;
-    word-spacing: 6px;
+    word-spacing: 16px;
   }
  
 }
